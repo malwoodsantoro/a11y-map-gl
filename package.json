@@ -1,0 +1,19 @@
+{
+  "name": "a11y-map-gl",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "open": "concurrently \"http-server -c-1 -a localhost -p 4000\" \"open http://localhost:4000/index.html\""
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^7.2.1",
+    "http-server": "^14.1.1"
+  },
+  "dependencies": {
+    "maplibre-gl": "^2.1.9"
+  }
+}
