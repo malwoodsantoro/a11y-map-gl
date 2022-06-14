@@ -24,7 +24,10 @@ var map = new maplibregl.Map({
     });
 
     map.on('load', () => {
-      let Accessibility = new AccessibleMap({layers: ['poi_z14', 'poi_z15', 'poi_z16']});
+      let Accessibility = new AccessibleMap({
+        layers: ['poi_z14', 'poi_z15', 'poi_z16'], 
+        description: "This is a map of East Portland, Oregon."
+      });
       map.addControl(Accessibility);
     });
 

@@ -1,10 +1,14 @@
 class AccessibleMap {
-  constructor(layers) {
-    this._layers = layers;
+  constructor(options) {
+    this._layers = options.layers;
+    this._description = options.description;
   }
 
   onAdd(map) {
     this._map = map;
+    this._mapcontainer = map._container;
+    this._mapcontainer.setAttribute('aria-label', this._description + 'Use the directional arrows to explore points of interest on the map.')
+    this._mapcontainer.setAttribute('aria-live', 'assertive')
     this._container = document.createElement('div');
     this._container.className = 'maplibre-accessibility-ctrl';
 
@@ -24,6 +28,7 @@ class AccessibleMap {
 
     const features = document.createElement('div');
     features.setAttribute('id', 'features')
+    features.setAttribute('aria-live', 'assertive');
     features.style.fontSize = '22px';
     features.style.width = '400px';
     features.style.height = '50vh';
@@ -47,14 +52,13 @@ class AccessibleMap {
     var point = this._map.project(this._map.getCenter());
     var width = 200;
     var height = 200;
-    console.log(this._layers)
     var features = this._map.queryRenderedFeatures([
       [point.x - width / 2, point.y - height / 2],
       [point.x + width / 2, point.y + height / 2]
-    ], { layers: this._layers.layers });
+    ], { layers: this._layers });
 
     features.map(function (feat, i) {
-      document.getElementById('features').innerHTML += '<div class="featureProperties" arialabel= "' + feat.properties.name + '" tabindex="' + (i + 1) + '">' + (i + 1) + '. ' + feat.properties.name + '</div>'
+      document.getElementById('features').innerHTML += '<div class="featureProperties" arialabel= "' + feat.properties.name + '" tabindex="' + (i + 2) + '">' + (i + 1) + '. ' + feat.properties.name + '</div>'
       document.getElementsByClassName('featureProperties')[i].style.outline = '2px solid black';
       document.getElementsByClassName('featureProperties')[i].style.padding = '20px';
       document.getElementsByClassName('featureProperties')[i].style.borderRadius = '5px';
