@@ -29,5 +29,6 @@ map.on('load', () => {
   map.addControl(Accessibility);
 });
 ```
+-------
 
 🐝
