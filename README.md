@@ -11,7 +11,7 @@ View the example by running the below command.
 
 ## Usage
 
-Add file in dist folder using script tag: 
+Add file from dist folder to script tag: 
 
 `<script src="a11y-map-gl.js"></script>`
 
@@ -29,3 +29,5 @@ map.on('load', () => {
   map.addControl(Accessibility);
 });
 ```
+
+🐝
