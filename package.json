@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "NODE_ENV=production && browserify index.js | terser --compress --mangle -- index.js > dist/a11y-map-gl.js",
     "example": "concurrently \"http-server -c-1 -a localhost -p 4000\" \"open http://localhost:4000/index.html\""
   },
   "author": "",
@@ -14,6 +15,8 @@
     "http-server": "^14.1.1"
   },
   "dependencies": {
-    "maplibre-gl": "^2.1.9"
+    "browserify": "^17.0.0",
+    "maplibre-gl": "^2.1.9",
+    "terser": "^5.14.1"
   }
 }
